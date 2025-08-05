@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contador Interactivo</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f4f4f4;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .contador {
+            font-size: 4rem;
+            margin: 30px 0;
+            color: #333;
+            transition: color 0.3s;
+        }
+        .contador.diez {
+            color: #e74c3c;
+        }
+        .botones {
+            display: flex;
+            gap: 20px;
+        }
+        button {
+            padding: 15px 30px;
+            font-size: 1.2rem;
+            border: none;
+            border-radius: 8px;
+            background: #3498db;
+            color: #fff;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+        button:hover {
+            background: #2980b9;
+        }
+    </style>
+</head>
+<body>
+    <h1>Contador Interactivo</h1>
+    <div id="contador" class="contador">0</div>
+    <div class="botones">
+        <button id="incrementar">Incrementar</button>
+        <button id="decrementar">Decrementar</button>
+    </div>
+    <script>
+        let valor = 0;
+        const contador = document.getElementById('contador');
+        const btnInc = document.getElementById('incrementar');
+        const btnDec = document.getElementById('decrementar');
+
+        function actualizarContador() {
+            contador.textContent = valor;
+            if (valor === 10) {
+                contador.classList.add('diez');
+            } else {
+                contador.classList.remove('diez');
+            }
+        }
+
+        btnInc.addEventListener('click', () => {
+            valor++;
+            actualizarContador();
+        });
+
+        btnDec.addEventListener('click', () => {
+            valor--;
+            actualizarContador();
+        });
+    </script>
+</body>
+</html>
